@@ -294,7 +294,7 @@ uv build
 
 ## Why HekaJev?
 
-`Heka` comes from the [Hecatoncheires](https://www.theoi.com/Titan/Hekatonkheires.html),
+`Heka` comes from the [Hecatoncheires](https://www.britannica.com/topic/Hecatoncheires),
 the hundred-handed giants of Greek mythology. `Jev` is the model that evaluates
 the questions. Together they describe the tool: a hundred hands moving through
 Git history, separating signal from noise.
