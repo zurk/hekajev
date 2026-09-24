@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hekajev-e2e-research"
+version = "0.1.0"
+description = "Offline enrichment and reproducible analysis of the frozen application E2E study."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.14"
+dependencies = ["hekajev==0.3.0", "numpy>=2,<3"]
+
+[project.optional-dependencies]
+figures = ["matplotlib>=3.10,<4"]
+
+[project.scripts]
+e2e-research = "e2e_research.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/e2e_research"]
+
+[tool.uv.sources]
+hekajev = { path = "../..", editable = true }
+
+[dependency-groups]
+dev = ["pytest>=9,<10", "ruff>=0.14"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM", "PERF", "RET", "PTH", "PIE", "TID"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

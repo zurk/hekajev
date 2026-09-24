@@ -1,0 +1,110 @@
+instructions: >-
+  Judge the visible commit evidence. A missing patch cannot show that behavior
+  is absent. Use the message and changes together to infer purpose. A filename,
+  commit prefix, timeout, skip, deletion, or snapshot update alone cannot show
+  intent. Test-only edits do not prove that product behavior stayed the same.
+
+filter_mode: and
+filters:
+  - >-
+    Does this commit add, modify, remove, disable, or re-enable automated tests
+    or their directly supporting assertions, snapshots, fixtures, mocks,
+    helpers, test configuration, or test-execution infrastructure?
+    Documentation that merely mentions tests and unrelated product changes
+    do not qualify.
+
+classifications:
+  reason:
+    mode: single
+    question: >-
+      What is the primary purpose of this commit's test-related changes?
+      Judge purpose from the change. Choose the best-supported reason, or
+      uncertain when several reasons compete
+      without a clear dominant one or evidence is insufficient.
+    categories:
+      coverage: >-
+        Add a meaningful scenario, regression test, or assertion to detect
+        previously uncovered faults. Tests accompanying a product bug fix
+        qualify when their purpose is to prevent recurrence.
+      product_adaptation: >-
+        Adapt existing tests to an intended change in product behavior,
+        interface, DOM, schema, or requirements. Added feature coverage alone
+        is coverage; fixing an incorrect test without changed product
+        expectations is test_bug.
+      test_bug: >-
+        Fix a repeatable bug in test logic, setup, data, or expected result.
+        Evidence points to a faulty test rather than intermittent behavior
+        or an intended product behavior change.
+      flakiness: >-
+        Fix intermittent outcomes caused by races,
+        timing, shared state, ordering, randomness, or unstable dependencies.
+        Require evidence of intermittent behavior or a concrete cause.
+        A timeout change alone is insufficient.
+      refactoring: >-
+        Improve test structure, readability, reuse, organization, or naming
+        while preserving intended coverage and checked behavior. Do not use
+        when a supported functional repair or new coverage is the main goal.
+      environment: >-
+        Maintain or migrate the test framework, runner, browser, dependency,
+        or execution environment. Compatibility or execution
+        is the main goal; an explicitly intermittent repair is flakiness.
+      uncertain: >-
+        Evidence cannot establish the purpose, patches are insufficient, or
+        several purposes have no clear dominant one. Removing or skipping a
+        test, or changing a snapshot, does not by itself establish a reason.
+
+  level:
+    mode: multi
+    aggregation: any
+    question: >-
+      Does this commit directly change tests at the specified level? Judge
+      the exercised boundary, not framework names or filenames alone.
+      Identify levels only from visibly affected tests. Generic helpers or
+      tooling with unidentified consumers cannot establish a test level.
+    categories:
+      unit: >-
+        Direct changes to tests of isolated functions, classes, or UI
+        components, with external collaborators absent, mocked, or stubbed.
+      integration: >-
+        Direct changes to tests of interactions across real components,
+        services, APIs, databases, or processes, without exercising a complete
+        user workflow.
+      e2e: >-
+        Direct changes to tests of complete user-visible workflows through a
+        running application, typically using a browser or an equivalent
+        external interface. Browser component tests alone do not qualify.
+
+  oracle_effect:
+    question: >-
+      How do the visible test changes affect the suite's ability to detect
+      faults in intended behavior? Consider meaningful assertions, scenarios,
+      and whether tests execute. Classify observable detection changes, not
+      an unproven effect on reliability. A timeout, retry, selector, refactor,
+      or snapshot update alone does not imply stronger or weaker checking.
+      Changed expected behavior can preserve checking if clearly justified;
+      otherwise use uncertain. Do not equate fewer lines with weaker tests.
+    categories:
+      strengthened: >-
+        Adds meaningful checks or scenarios, makes checks more discriminating,
+        or re-enables tests, with no material weakening visible.
+      weakened: >-
+        Removes meaningful checks or scenarios, relaxes accepted outcomes,
+        swallows failures, or disables tests without equivalent replacement,
+        with no material strengthening visible.
+      unchanged: >-
+        Preserves meaningful checked behavior, scenarios, and execution.
+        Changes affect setup, synchronization, organization, or equivalent
+        implementation while the same semantic checks remain.
+      mixed: >-
+        Both material strengthening and material weakening are visible in
+        different parts of the commit, with no justified single direction.
+      uncertain: >-
+        Available evidence cannot establish the direction or equivalence of
+        checking, including missing assertions or ambiguous expected updates.
+
+filter_threshold: 0.8
+choice_threshold: 0.6
+multi_threshold: 0.8
+limits:
+  input_bytes: 32768
+  max_chunks: 20

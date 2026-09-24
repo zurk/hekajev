@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E2E research · technical appendix</title>
+<style>$styles</style>
+<main>
+  <div class="eyebrow">HekaJev · research/e2e · техническое приложение</div>
+  <h1>E2E-изменения: дополнительные проверки и AI-атрибуция</h1>
+  <p>$all_commits nonmerge-коммитов · $candidates размеченных кандидатов · $matched E2E-положительных.</p>
+  $section
+  <section>
+    <h2>Сопровождение на 100 всех коммитов</h2>
+    <p>Те же $projects OSS-проектов; январь — 21 сентября 2025/2026.</p>
+    <div class="scroll"><table>
+      <tr><th>Причина</th><th>2025 · равные веса</th><th>2026 · равные веса</th><th>Суммарная частота</th></tr>
+      $normalized_rows
+    </table></div>
+    <p>Полные числители, знаменатели, временные срезы, цепочки и проверки находятся в файлах агрегатов.</p>
+  </section>
+  <section>
+    <h2>Воспроизводимость</h2>
+    <ol>
+      <li>ingest: сохранённые ответы Jev → classified.jsonl.gz.</li>
+      <li>enrich: фиксированная Git-история → commits.enriched.jsonl.gz.</li>
+      <li>aggregate: JSONL → базовые показатели, без Git, сети и Jev.</li>
+      <li>report: агрегаты → этот HTML. Значения берутся из JSON.</li>
+    </ol>
+    <p><a href="findings.md">Выводы и метод</a> ·
+      <a href="$aggregates/basic.json">Базовые числа</a> ·
+      <a href="$aggregates/temporal.json">Время и возраст</a> ·
+      <a href="$aggregates/coverage-rise.json">Рост нового покрытия</a> ·
+      <a href="$aggregates/ai-attribution.json">AI и причины</a> ·
+      <a href="$aggregates/file-chains.json">Цепочки и нормировка</a> ·
+      <a href="$aggregates/ai-followup.json">AI и сопровождение</a> ·
+      <a href="$aggregates/calendar-followup.json">Год добавления и возвраты</a> ·
+      <a href="$aggregates/metrics.jsonl.gz">Каталог чисел</a> ·
+      <a href="$aggregates/provenance.json">Происхождение расчётов</a></p>
+  </section>
+</main>
+<script>$script</script>
+</html>

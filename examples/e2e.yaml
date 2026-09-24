@@ -1,0 +1,73 @@
+instructions: >-
+  E2E tests run a user-visible scenario through an application's browser, CLI,
+  or public interface and cross real internal boundaries. Unit and component
+  tests, isolated Storybook interactions, single API or database checks, and
+  browser-library tests are outside this scope. Mocked external services can
+  still allow E2E testing. Require evidence of E2E use, not just a test name.
+  Product-only and empty commits do not qualify.
+
+filter_mode: or
+filters:
+  - question: >-
+      Do these changes add, modify, remove, disable, or re-enable executable E2E
+      tests, their assertions or snapshots, or fixtures, test applications,
+      mocks, page objects, and helpers known to support E2E scenarios?
+      Passive examples, documentation, product code, and support with no
+      known E2E consumers do not qualify.
+    aggregation: any
+  - question: >-
+      Do these changes modify configuration, scripts, or dependencies explicitly
+      used to install, build, or execute E2E tests or their tools? Include E2E
+      runner settings, E2E support builds, and installation/caching of browsers
+      used by E2E tests. Generic CI, production dependencies, and unit/component
+      test tools need clear evidence of direct E2E use.
+    aggregation: any
+
+classifications:
+  reason:
+    mode: multi
+    aggregation: any
+    question: >-
+      Does a change to E2E tests or their linked support show this purpose?
+      Each purpose needs its own evidence. Ignore side effects and unrelated
+      unit, component, or integration tests. Several or no purposes may apply.
+    categories:
+      coverage: >-
+        Add an E2E scenario, regression test, or meaningful check. A new E2E
+        test alongside a feature or product fix qualifies. Equivalent rewrites,
+        renames, and expected-value replacements alone do not add coverage.
+      product_adaptation: >-
+        Change an existing E2E test's expectations, calls, or setup to match a
+        clear intended change in product behavior or interface. Require both
+        the test edit and the changed contract. Examples:
+        use a new API argument or grant newly required permissions in an
+        existing scenario. New regressions accompanying a product fix and
+        test-page count updates solely for added scenarios do not qualify.
+      test_bug: >-
+        Fix a repeatable bug in an existing E2E test, fixture, or helper under
+        the current product contract, such
+        as checking the wrong object or using the wrong existing endpoint.
+        Changed product contracts, product regressions, and intermittent-test
+        repairs do not qualify. Test-only edits do not establish this purpose.
+      flakiness: >-
+        Fix intermittent E2E test outcomes shown by a described failure
+        or a concrete race, ordering dependency, shared-state leak, randomness,
+        timing issue, or unstable external service. A wait, retry, timeout,
+        cleanup, or skip alone is insufficient. New E2E tests using waits, or
+        regressions for a product race, do not establish flaky-test repair.
+      refactoring: >-
+        Reorganize existing E2E tests or helpers while preserving
+        scenarios and semantic checks, such as extracting shared existing
+        setup. Rewrites needed only for new coverage, a defect repair, or a
+        changed product interface do not qualify.
+      environment: >-
+        Maintain or migrate an E2E runner, framework, browser, test dependency,
+        build, or execution environment with clear direct E2E use.
+        Generic automation, product runtime updates, component-only tooling,
+        and the same repair of intermittent test behavior do not qualify.
+
+filter_threshold: 0.8
+multi_threshold: 0.8
+limits:
+  input_bytes: 32768
+  max_chunks: 20

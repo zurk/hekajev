@@ -1,0 +1,46 @@
+<section id="ai-followup">
+  <div class="eyebrow">AI-атрибуция · последующее сопровождение · воспроизводимый расчёт</div>
+  <h2>Чаще ли возвращаются к AI-отмеченным изменениям?</h2>
+  <p>Сравнивается атрибуция исходного коммита. Отсутствие отметки не означает отсутствие AI;
+    подпись коммита не устанавливает авторство каждого теста.</p>
+  <div class="cards">
+    <div class="card"><div class="big">$ai_rate% / $unmarked_rate%</div>
+      <p>Новые файлы, сопровождение за 30 дней, без подбора: AI / без отметки.
+        Исходников: $ai_n / $unmarked_n.</p></div>
+    <div class="card"><div class="big">$projects проекта</div>
+      <p>Остаются после подбора проекта и квартала: $project_names.
+        Общая поддержка: $matched_ai / $matched_unmarked исходников.</p></div>
+    <div class="card"><div class="big">$ai_flaky% / $unmarked_flaky%</div>
+      <p>Новые файлы, flakiness-правка за 30 дней, без подбора: AI / без отметки.</p></div>
+  </div>
+  <p class="note">Гипотеза «после AI чаще и быстрее требуется сопровождение» устойчивого
+    подтверждения не получила. Для новых файлов сопоставимых проектов слишком мало.
+    Flakiness отдельно также меняет направление между спецификациями.
+    Это не доказывает ни вред, ни преимущество AI.</p>
+  <div class="controls">
+    <label>Исходные изменения<select id="af-cohort">$cohorts</select></label>
+    <label>Окно<select id="af-window">
+      <option>14</option><option selected>30</option><option>90</option>
+    </select></label>
+    <label>Выборка<select id="af-scope">$scopes</select></label>
+    <label>Сопоставление<select id="af-method">$methods</select></label>
+  </div>
+  <p id="af-support" class="muted"></p>
+  <div class="scroll"><table id="af-metrics"></table></div>
+  <div id="af-bars" class="af-bars"></div>
+  <details><summary>Сырое сравнение выбранной когорты</summary>
+    <div class="scroll"><table id="af-raw"></table></div>
+  </details>
+  <p class="note">Время ограничено выбранным окном: исходник без наблюдаемого сопровождения
+    вносит все дни окна. Меньшее среднее означает сочетание более частых и ранних возвратов.
+    Интервалы показываются только от трёх проектов.</p>
+  <details><summary>Поддержка по проектам</summary>
+    <div class="scroll"><table id="af-projects"></table></div>
+  </details>
+  <p>Общие ячейки: ≥5 исходников каждой группы (по месяцам ≥3), проект: ≥20 каждой группы.
+    Внутри проекта веса соответствуют AI-исходникам; проекты взвешены поровну.
+    Данные 2025–2026, полное окно наблюдения.</p>
+  <p>Сохранены все проверки, включая отсутствие общей поддержки. Причины размечены на коммитах;
+    цепочка общего файла может объединять разные тест-кейсы. CI и рабочее время не измерены.</p>
+</section>
+<script type="application/json" id="af-data">$data</script>

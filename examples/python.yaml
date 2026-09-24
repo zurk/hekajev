@@ -1,0 +1,11 @@
+filters:
+  - Does this commit change Python source code, including Python tests?
+
+classifications:
+  scope:
+    question: Which Python code is changed? Classify only the visible Python changes.
+    categories:
+      product: Product code changes, with no Python test changes.
+      tests: Python test code changes, with no Python product code changes.
+      both: Both Python product code and Python test code change.
+      uncertain: Available evidence cannot establish which kind of Python code changes.

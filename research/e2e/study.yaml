@@ -1,0 +1,390 @@
+# Application E2E study: frozen repository revisions and audited candidate paths.
+# HekaJev 0.3.0; jev-1.13.0; nonmerge history; full commit evidence.
+# Run: hekajev scan --config research/e2e/study.yaml --limit 1000000 --output results/e2e
+inputs:
+- repository: https://github.com/apache/superset.git
+  revision: 7486b7187bfeca1ca3393969c3b26a4e11206af1
+  path_patterns:
+  - superset-frontend/playwright/**
+  - superset-frontend/playwright.config.*
+  - superset-frontend/cypress-base/**
+  - superset/assets/cypress-base/**
+  - superset/assets/cypress/**
+  - superset/assets/cypress.json
+  - superset-frontend/cypress_build.sh
+  - scripts/cypress_run.py
+  - docker/docker-entrypoint-initdb.d/cypress-init.sh
+- repository: https://github.com/calcom/cal.diy.git
+  revision: 54343aa685ae8f33159d2f485ec4a57bad5c574a
+  path_patterns:
+  - apps/web/playwright/**
+  - apps/web/playwright-integrations/**
+  - apps/web/playwright.config.*
+  - playwright/**
+  - playwright.config.*
+  - cypress/**
+  - cypress.json
+  - jest.playwright.config.js
+  - tests/config/playwright.config.ts
+  - packages/app-store/**/*.e2e.ts
+  - packages/app-store/**/*.e2e.tsx
+  - packages/app-store/_apps-playwright/**
+  - packages/app-store/**/playwright/**
+  - packages/embeds/**/playwright/**
+- repository: https://github.com/coder/coder.git
+  revision: c5c7f9d8b2727b1430a55716728b023b389ede34
+  path_patterns:
+  - site/e2e/**
+  - scripts/playwright-failure-summary.sh
+  - scripts/remote_playwright.sh
+- repository: https://github.com/FalkorDB/QueryWeaver.git
+  revision: 0b86aebbd0fe2ceefe54824846b31153bcc33233
+  path_patterns:
+  - e2e/**
+  - tests/e2e/**
+  - playwright.config.*
+  - setup_e2e_tests.sh
+- repository: https://github.com/holoviz/panel.git
+  revision: 506918830f73a2ebae642489003bee74cc11a488
+  path_patterns:
+  - panel/tests/ui/command/**
+  - panel/tests/ui/test_auth.py
+  - panel/tests/ui/logout.html
+  - panel/tests/ui/io/test_convert.py
+  - panel/tests/ui/io/test_jupyter_server_extension.py
+  - panel/tests/ui/io/test_jupyterlite.py
+  - panel/tests/ui/io/test_nbclassic.py
+  - panel/tests/ui/io/test_reload.py
+  - panel/tests/ui/io/test_server.py
+  - panel/tests/ui/io/app.py
+  - panel/tests/ui/io/app.md
+  - panel/tests/ui/io/*.ipynb
+  - panel/tests/ui/io/nbclassic/**
+  - panel/tests/ui/jupyter_server_test_config.py
+- repository: https://github.com/IBM/mcp-context-forge.git
+  revision: 1950bcb8b6f6566d0283b07c455a3f084e67d678
+  path_patterns:
+  - tests/playwright/**
+  - playwright.config.py
+- repository: https://github.com/jupyterlab/jupyterlab.git
+  revision: 8ec135d90d56528d270d9fa084c2de5cbf89b5cd
+  path_patterns:
+  - galata/**
+  - ui-tests/**
+  - jupyterlab/galata/**
+- repository: https://github.com/keycloak/keycloak.git
+  revision: efc768ae8fae921d6fa4e5017a7f86616920ea5f
+  path_patterns:
+  - js/apps/account-ui/test/**
+  - js/apps/admin-ui/test/**
+  - js/apps/account-ui/playwright.config.*
+  - js/apps/admin-ui/playwright.config.*
+  - js/apps/admin-ui/cypress/**
+  - js/apps/admin-ui/cypress.config.*
+  - apps/admin-ui/cypress/**
+  - apps/admin-ui/cypress.config.*
+  - cypress/**
+  - cypress.config.*
+  - tests/cypress/**
+  - tests/base/src/test/java/org/keycloak/tests/forms/**
+  - tests/base/src/test/java/org/keycloak/tests/actions/**
+  - tests/base/src/test/java/org/keycloak/tests/account/custom/**
+  - tests/webauthn/**
+  - testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/forms/**
+  - testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/account/**
+  - testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/console/**
+  - testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/pages/**
+  - testsuite/integration/src/test/java/org/keycloak/testsuite/forms/**
+  - testsuite/integration/src/test/java/org/keycloak/testsuite/pages/**
+  - test-framework/ui/**
+  - test-framework/src/main/java/org/keycloak/test/framework/webdriver/**
+- repository: https://github.com/marimo-team/marimo.git
+  revision: e35a61aef191c1a653d8505b6ef25ba2be6e34dd
+  path_patterns:
+  - frontend/e2e-tests/**
+  - frontend/playwright.config.*
+- repository: https://github.com/mattermost/mattermost.git
+  revision: b26462b2916da75508c011f371b836006fcf42bd
+  path_patterns:
+  - e2e-tests/**
+  - e2e/**
+- repository: https://github.com/mozilla/kitsune.git
+  revision: 86d7283f803c65a39d6e8a3524cff8a94b4967f5
+  path_patterns:
+  - playwright_tests/**
+  - selenium_tests/**
+  - .github/workflows/playwright.yml
+  - .github/workflows/selenium.yml
+  - scripts/travis/selenium.sh
+- repository: https://github.com/mui/material-ui.git
+  revision: cf3f914c950bf9134344ae56de8e42b746ae975c
+  path_patterns:
+  - test/e2e-website/**
+- repository: https://github.com/n8n-io/n8n.git
+  revision: c37c4d7b3f191a04af913aef8ce7d05b6515e5dc
+  path_patterns:
+  - cypress/**
+  - cypress.config.js
+  - packages/editor-ui/tests/e2e/**
+  - packages/editor-ui/cypress.json
+  - scripts/run-e2e.js
+  - packages/testing/playwright/tests/e2e/**
+  - packages/testing/playwright/tests/ui/**
+  - packages/testing/playwright/tests/cli-workflows/**
+  - packages/testing/playwright/tests/1-workflows.spec.ts
+  - packages/testing/playwright/tests/28-debug.spec.ts
+  - packages/testing/playwright/tests/39-projects.spec.ts
+  - packages/testing/playwright/tests/authenticated.spec.ts
+  - packages/testing/playwright/composables/**
+  - packages/testing/playwright/config/**
+  - packages/testing/playwright/expectations/**
+  - packages/testing/playwright/fixtures/**
+  - packages/testing/playwright/helpers/**
+  - packages/testing/playwright/pages/**
+  - packages/testing/playwright/reporters/**
+  - packages/testing/playwright/services/**
+  - packages/testing/playwright/utils/**
+  - packages/testing/playwright/workflows/**
+  - packages/testing/playwright/test-workflows/**
+  - packages/testing/playwright/playwright.config.ts
+  - packages/testing/playwright/playwright-projects.ts
+  - packages/testing/playwright/global-setup.ts
+  - packages/testing/playwright/global-teardown.ts
+  - packages/testing/playwright/currents.config.ts
+  - packages/testing/playwright/package.json
+  - packages/testing/playwright/.playwright-version
+  - packages/cli/src/api/e2e.api.ts
+  - packages/cli/src/controllers/e2e.controller.ts
+  - packages/nodes-base/nodes/E2eTest/**
+  - .github/workflows/ci-manual-e2e.yml
+  - .github/workflows/e2e-flaky.yml
+  - .github/workflows/e2e-reusable.yml
+  - .github/workflows/e2e-tests.yml
+  - .github/workflows/e2e-tests-pr.yml
+  - .github/workflows/e2e-tests-pr-comment.yml
+  - .github/workflows/playwright-nightly.yml
+  - .github/workflows/playwright-test-ci.yml
+  - .github/workflows/playwright-test-reusable.yml
+  - .github/workflows/test-e2e-ci-reusable.yml
+  - .github/workflows/test-e2e-reusable.yml
+- repository: https://github.com/reflex-dev/reflex.git
+  revision: 4cba00435ec80e15362fb61a5602d8cd99d26464
+  path_patterns:
+  - tests/integration/**
+  - reflex/testing.py
+  - .github/workflows/integration_tests.yml
+  - .github/workflows/integration_app_harness.yml
+- repository: https://github.com/storybookjs/storybook.git
+  revision: 124f51f33dd42cdbd0fba1b5eaef7a22499642bc
+  path_patterns:
+  - code/e2e-sandbox/**
+  - code/e2e-internal/**
+  - code/e2e-tests/**
+  - code/playwright.config.ts
+  - code/playwright.internal.config.ts
+  - cypress/**
+  - cypress.json
+  - code/cypress/**
+  - code/cypress.json
+  - scripts/run-e2e.sh
+  - scripts/run-e2e.ts
+  - scripts/run-e2e-config.ts
+  - scripts/e2e-sandboxes.ts
+  - scripts/tasks/e2e-tests*.ts
+  - .circleci/src/executors/sb_playwright.yml
+  - .circleci/src/jobs/e2e-dev.yml
+  - .circleci/src/jobs/e2e-production.yml
+  - .circleci/src/jobs/e2e-ui.yml
+- repository: https://github.com/streamlit/streamlit.git
+  revision: 3a84dfec4d46050b8834c862719cf8602d33714b
+  path_patterns:
+  - e2e_playwright/**
+  - e2e/**
+  - e2e_flaky/**
+  - frontend/cypress/**
+  - frontend/cypress.json
+  - scripts/e2e.sh
+  - scripts/run_e2e_tests.py
+  - scripts/run_e2e_tests.sh
+  - scripts/e2e_executable_tests_plugin.py
+  - scripts/update_e2e_snapshots.py
+  - scripts/compare_e2e_test_counts.py
+  - .github/actions/playwright_install/**
+  - .github/workflows/playwright.yml
+  - .github/workflows/playwright-changed-files.yml
+  - .github/workflows/playwright-custom-components.yml
+  - .github/workflows/cypress.yml
+  - .github/workflows/cypress-update-snapshots.yml
+  - .github/workflows/component-template-e2e-tests.yml
+- repository: https://github.com/supabase/supabase.git
+  revision: e357ec8f9f0b530304f99d9e30c9785f2511bee8
+  path_patterns:
+  - e2e/studio/**
+  - e2e/docs/**
+  - e2e/www/**
+  - e2e/shared/**
+  - playwright-tests/**
+  - tests/local-studio-tests/**
+  - tests/studio-tests/**
+  - .github/workflows/studio-e2e-test.yml
+  - .github/workflows/studio-e2e-tests.yml
+  - .github/workflows/docs-e2e.yml
+  - .github/workflows/www-e2e.yml
+  - .github/workflows/playwright.yml
+- repository: https://github.com/supakeen/pinnwand.git
+  revision: c779e8fd1eaeee44f31ecb186f9d798783cd3ba4
+  path_patterns:
+  - test/e2e/**
+- repository: https://github.com/umbraco/Umbraco-CMS.git
+  revision: 4d17e7a79f8d391edcb73669450bad9759334ace
+  path_patterns:
+  - tests/Umbraco.Tests.AcceptanceTest/**
+  - src/Umbraco.Tests.AcceptanceTest/**
+  - tests/Umbraco.Tests.AcceptanceTest.UmbracoProject/**
+  - build/nightly-E2E-build-template.yml
+  - build/nightly-E2E-run-application-template.yml
+  - build/nightly-E2E-run-tests-template.yml
+  - build/nightly-E2E-setup-template.yml
+  - build/nightly-E2E-test-pipelines.yml
+  - build/templates/e2e-install.yml
+- repository: https://github.com/woocommerce/woocommerce.git
+  revision: 61980b2bd233374df53a836533ae619ca31a198d
+  path_patterns:
+  - tests/e2e/**
+  - tests/e2e-env/**
+  - tests/e2e-tests/**
+  - tests/e2e-utils/**
+  - assets/components/e2e-env/**
+  - plugins/woocommerce/tests/e2e/**
+  - plugins/woocommerce/tests/e2e-pw/**
+  - plugins/woocommerce/e2e/**
+  - plugins/woocommerce/client/blocks/tests/e2e/**
+  - plugins/woocommerce-blocks/tests/e2e/**
+  - plugins/woocommerce-blocks/tests/e2e-jest/**
+  - plugins/woocommerce-blocks/tests/e2e-pw/**
+  - plugins/woocommerce-blocks/tests/e2e-tests/**
+  - plugins/woocommerce-admin/tests/e2e/**
+  - plugins/woocommerce-admin/packages/admin-e2e-tests/**
+  - packages/js/admin-e2e-tests/**
+  - packages/js/e2e-core-tests/**
+  - packages/js/e2e-environment/**
+  - packages/js/e2e-utils-playwright/**
+  - packages/js/e2e-utils/**
+  - packages/js/e2e-builds/**
+  - packages/js/internal-e2e-builds/**
+  - plugins/woocommerce/.wp-env.e2e.json
+  - tests/bin/e2e-test-integration.js
+  - tests/bin/run-e2e-CI.sh
+  - .github/actions/tests/run-e2e-tests/action.yml
+  - .github/workflows/blocks-e2e.yml
+  - .github/workflows/blocks-playwright.yml
+  - .github/workflows/cot-build-and-e2e-tests-daily-wip.yml
+  - .github/workflows/cot-build-and-e2e-tests-daily.yml
+  - .github/workflows/cot-pr-build-and-e2e-tests.yml
+  - .github/workflows/deprecated/blocks-playwright.yml
+  - .github/workflows/deprecated/non-cot-e2e-tests.yml
+  - .github/workflows/deprecated/non-hpos-build-and-e2e-tests-daily.yml
+  - .github/workflows/deprecated/pr-build-and-e2e-tests.yml
+  - .github/workflows/hpos-build-and-e2e-tests-daily.yml
+  - .github/workflows/non-cot-e2e-tests.yml
+  - .github/workflows/non-cot-pr-build-and-e2e-tests.yml
+  - .github/workflows/non-hpos-build-and-e2e-tests-daily.yml
+  - .github/workflows/pr-build-and-e2e-tests-skip.yml
+  - .github/workflows/pr-build-and-e2e-tests.yml
+- repository: https://github.com/WordPress/gutenberg.git
+  revision: 34130da6faf13353c70bb0975524ecf185a3400d
+  path_patterns:
+  - test/e2e/**
+  - packages/e2e-tests/**
+  - packages/tests-e2e/**
+  - packages/e2e-test-utils/**
+  - packages/e2e-test-utils-playwright/**
+  - cypress/**
+  - cypress.json
+  - bin/reset-e2e-tests.sh
+  - bin/reset-local-e2e-tests.sh
+  - bin/run-e2e-tests.sh
+  - bin/setup-travis-e2e-tests.sh
+  - packages/scripts/config/playwright.config.js
+  - packages/scripts/config/playwright/**
+  - packages/scripts/scripts/test-e2e.js
+  - packages/scripts/scripts/test-playwright.js
+  - .github/setup-playwright/**
+  - .github/workflows/end2end-test-playwright.yml
+
+instructions: >-
+  E2E tests drive a user-visible scenario, including rendering or interaction,
+  through a running application's browser, CLI, or public interface across real
+  internal boundaries. Unit/component tests, isolated Storybook interactions,
+  individual API/DB checks, and browser-library API tests are not E2E. Mocking third-party services
+  can still permit E2E. Require evidence of E2E use; names alone do not suffice.
+  Only E2E-related changes establish these purposes. Product-only and empty
+  commits do not qualify.
+
+filter_mode: or
+filters:
+  - question: >-
+      Do these changes add, modify, remove, disable, or re-enable executable E2E
+      tests, their assertions or snapshots, or fixtures, test applications,
+      mocks, page objects, and helpers demonstrably supporting E2E scenarios?
+      Passive examples, documentation, product code, and support with no
+      evidenced E2E consumers do not qualify.
+    aggregation: any
+  - question: >-
+      Do these changes modify configuration, scripts, or dependencies explicitly
+      used to install, build, or execute E2E tests or their tools? Include E2E
+      runner settings, E2E support builds, and installation/caching of browsers
+      used by E2E tests. Generic CI, production dependencies, and unit/component
+      test infrastructure do not qualify without demonstrated direct E2E use.
+    aggregation: any
+
+classifications:
+  reason:
+    mode: multi
+    aggregation: any
+    question: >-
+      Is this purpose directly supported by a change to E2E tests or their
+      explicitly linked support? Each purpose needs its own supporting change;
+      incidental consequences and unrelated unit/component/integration changes
+      are insufficient. Several or no purposes may apply.
+    categories:
+      coverage: >-
+        Introduce a meaningful E2E scenario, regression test, or additional
+        semantic check. New E2E tests accompanying a feature or product fix
+        qualify. Equivalent rewrites, renames, and expected-value replacements
+        alone do not add coverage.
+      product_adaptation: >-
+        Modify a pre-existing E2E test's expectations, calls, or setup for an
+        identifiable intended change in product behavior or interface. Require
+        both the existing-test modification and the changed contract. Examples:
+        use a new API argument or grant newly required permissions in an
+        existing scenario. New regressions accompanying a product fix and
+        test-page count updates solely for added scenarios do not qualify.
+      test_bug: >-
+        Correct a pre-existing deterministic defect in an E2E test, fixture,
+        or helper under the intended product contract already in force, such
+        as checking the wrong object or using the wrong existing endpoint.
+        Changed product contracts, product regressions, and intermittent-test
+        repairs do not qualify. Test-only edits do not establish this purpose.
+      flakiness: >-
+        Repair intermittent E2E test outcomes evidenced by a described failure
+        or a concrete race, ordering dependency, shared-state leak, randomness,
+        timing issue, or unstable external service. A wait, retry, timeout,
+        cleanup, or skip alone is insufficient. New E2E tests using waits, or
+        regressions for a product race, do not establish flaky-test repair.
+      refactoring: >-
+        Independently reorganize existing E2E tests or helpers while preserving
+        scenarios and semantic checks, such as extracting shared existing
+        setup. Rewrites needed only for new coverage, a defect repair, or a
+        changed product interface do not qualify.
+      environment: >-
+        Maintain or migrate an E2E runner, framework, browser, test dependency,
+        build, or execution environment with demonstrated direct E2E use.
+        Generic automation, product runtime updates, component-only tooling,
+        and the same repair of intermittent test behavior do not qualify.
+
+filter_threshold: 0.8
+multi_threshold: 0.8
+limits:
+  input_bytes: 49152
+  max_chunks: 20

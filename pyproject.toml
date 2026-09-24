@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hekajev"
+version = "0.3.0"
+description = "Ask configurable questions about Git commits, with bounded evidence and resumable results."
+readme = "README.md"
+requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["httpx>=0.28,<1", "pydantic>=2.12,<3", "pyyaml>=6.0.3,<7"]
+
+[project.scripts]
+hekajev = "hekajev.cli:main"
+
+[project.urls]
+Repository = "https://github.com/zurk/hekajev"
+Issues = "https://github.com/zurk/hekajev/issues"
+
+[dependency-groups]
+dev = ["pytest>=9,<10", "ruff>=0.14"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/research"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM", "PERF", "RET", "PTH", "PIE", "TID"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "E2E research enriched nonmerge commit, version 1",
+  "type": "object",
+  "required": ["schema_version", "slug", "sha", "date", "selection", "source_stratum", "classification", "features"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "slug": {"type": "string"},
+    "sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "date": {"type": "string", "format": "date-time"},
+    "selection": {"enum": ["classified", "outside_path_selection"]},
+    "source_stratum": {"type": "string"},
+    "classification": {
+      "type": ["object", "null"],
+      "required": ["slug", "sha", "matched", "labels", "undecided_labels", "complete", "jev", "source"],
+      "properties": {
+        "matched": {"type": ["boolean", "null"]},
+        "labels": {"type": "array", "items": {"type": "string"}},
+        "undecided_labels": {"type": "array", "items": {"type": "string"}},
+        "complete": {"type": "boolean"},
+        "jev": {"type": "object"},
+        "source": {"type": "object"}
+      }
+    },
+    "features": {
+      "type": "object",
+      "required": ["year", "quarter", "month", "halfyear", "age_year", "e2e_age_year", "within_ytd"],
+      "properties": {
+        "year": {"type": "integer"},
+        "age_year": {"type": "integer", "minimum": 1},
+        "e2e_age_year": {"type": ["integer", "null"]},
+        "within_ytd": {"type": "boolean"},
+        "ai_attributed": {"type": "boolean"},
+        "ai_evidence": {"type": "array", "items": {"type": "string"}},
+        "eligible_windows": {"type": "object", "additionalProperties": {"type": "boolean"}},
+        "followups": {"type": "array", "items": {"$ref": "#/$defs/followup"}}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"selection": {"const": "outside_path_selection"}}},
+      "then": {"properties": {"classification": {"type": "null"}}},
+      "else": {
+        "properties": {
+          "classification": {"type": "object"},
+          "features": {"required": ["ai_attributed", "ai_evidence", "e2e_paths", "eligible_windows", "followups"]}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "followup": {
+      "type": "object",
+      "required": ["scope", "window", "repeat_maintenance", "repeat_flakiness", "first_maintenance_days", "prior_30d_commits"],
+      "properties": {
+        "scope": {"enum": ["test", "new_test", "code"]},
+        "window": {"enum": [14, 30, 90]},
+        "repeat_maintenance": {"type": "boolean"},
+        "repeat_flakiness": {"type": "boolean"},
+        "first_maintenance_days": {"type": ["number", "null"], "minimum": 0},
+        "prior_30d_commits": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

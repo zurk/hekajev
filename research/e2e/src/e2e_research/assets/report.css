@@ -1,0 +1,18 @@
+body { font: 17px/1.6 system-ui, sans-serif; background: #f4f6f8; color: #25313a; margin: 0; }
+main { max-width: 1100px; margin: auto; padding: 30px 20px; }
+section { background: white; border: 1px solid #dbe1e6; border-radius: 16px; padding: 26px; margin: 24px 0; }
+h1, h2, h3 { line-height: 1.2; }
+.eyebrow { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #61717c; }
+.cards, .controls, .af-bars { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+.card { border: 1px solid #dbe1e6; border-radius: 12px; padding: 20px; }
+.big { font-size: 30px; color: #2476a8; font-weight: 750; }
+label { display: block; font-size: 14px; }
+select { display: block; width: 100%; padding: 10px; margin: 7px 0; border: 1px solid #bcc8d1; border-radius: 8px; background: white; }
+.note { background: #f4f7fa; border-left: 3px solid #b98f4b; padding: 14px; }
+.muted { color: #61717c; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+td, th { padding: 10px; text-align: left; border-bottom: 1px solid #dbe1e6; }
+a { color: #2476a8; }
+details { margin: 18px 0; }
+.af-bars p { margin: 3px 0; }
